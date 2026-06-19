@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Fraud Analytics Platform</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="logo">
+            🛡 Fraud Analytics
+        </div>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/alerts">
+            🚨 Fraud Alerts
+        </a>
+
+        <a href="/predict-page">
+            🤖 Live Prediction
+        </a>
+
+        <a href="/status-page">
+            ⚙ System Status
+        </a>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+
+            <h1>
+                Distributed Real-Time Fraud Detection & Analytics Platform
+            </h1>
+
+            <p>
+                Kafka • Redis • XGBoost V2 • FastAPI • MLflow
+            </p>
+
+        </div>
+
+        <!-- Stats Cards -->
+
+        <div class="stats-grid">
+
+            <div class="card">
+
+                <h3>
+                    Total Users
+                </h3>
+
+                <h1 id="users">
+                    -
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    Transactions
+                </h3>
+
+                <h1 id="transactions">
+                    -
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    Fraud Alerts
+                </h3>
+
+                <h1 id="fraud-alerts">
+                    -
+                </h1>
+
+            </div>
+
+            <div class="card">
+
+                <h3>
+                    Fraud Rate
+                </h3>
+
+                <h1 id="fraud-rate">
+                    -
+                </h1>
+
+            </div>
+
+        </div>
+
+        <!-- Charts -->
+
+        <div class="chart-grid">
+
+            <div class="chart-card">
+
+                <h2>
+                    Fraud Distribution
+                </h2>
+
+                <canvas id="fraudChart"></canvas>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h2>
+                    Fraud By Merchant
+                </h2>
+
+                <canvas id="merchantChart"></canvas>
+
+            </div>
+
+        </div>
+
+        <!-- Recent Alerts -->
+
+        <div class="alerts-card">
+
+            <h2>
+                Recent Fraud Alerts
+            </h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            User ID
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Merchant
+                        </th>
+
+                        <th>
+                            Probability
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="alerts-body">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const fraudChart = new Chart(
+            document.getElementById(
+                'fraudChart'
+            ),
+            {
+                type: 'doughnut',
+
+                data: {
+
+                    labels: [
+                        'Legitimate',
+                        'Fraud'
+                    ],
+
+                    datasets: [{
+
+                        data: [
+                            95,
+                            5
+                        ]
+                    }]
+                }
+            }
+        );
+
+        const merchantChart = new Chart(
+            document.getElementById(
+                'merchantChart'
+            ),
+            {
+                type: 'bar',
+
+                data: {
+
+                    labels: [
+                        'Food',
+                        'Shopping',
+                        'Travel',
+                        'Education'
+                    ],
+
+                    datasets: [{
+
+                        label:
+                            'Fraud Alerts',
+
+                        data: [
+                            12,
+                            45,
+                            8,
+                            17
+                        ]
+                    }]
+                }
+            }
+        );
+
+    </script>
+
+    <script src="/static/app.js"></script>
+
+</body>
+
+</html>

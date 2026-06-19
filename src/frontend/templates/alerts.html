@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Fraud Alerts</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <div class="logo">
+            🛡 Fraud Analytics
+        </div>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <a href="/alerts">
+            🚨 Fraud Alerts
+        </a>
+
+        <a href="/predict-page">
+            🤖 Live Prediction
+        </a>
+
+        <a href="/status-page">
+            ⚙ System Status
+        </a>
+
+    </div>
+
+    <div class="main">
+
+        <h1>
+            🚨 Live Fraud Alerts
+        </h1>
+
+        <p>
+            Auto refresh every 5 seconds
+        </p>
+
+        <div class="alerts-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>User ID</th>
+
+                        <th>Amount</th>
+
+                        <th>Merchant</th>
+
+                        <th>Fraud Probability</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="alerts-body">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+<script>
+
+async function loadAlerts(){
+
+    const response =
+    await fetch(
+        "/fraud-alerts"
+    );
+
+    const alerts =
+    await response.json();
+
+    let html = "";
+
+    alerts.forEach(alert => {
+
+        html += `
+
+        <tr>
+
+            <td>
+                ${alert.user_id}
+            </td>
+
+            <td>
+                ₹${alert.amount}
+            </td>
+
+            <td>
+                ${alert.merchant}
+            </td>
+
+            <td class="danger">
+                ${alert.fraud_probability}
+            </td>
+
+        </tr>
+
+        `;
+    });
+
+    document.getElementById(
+        "alerts-body"
+    ).innerHTML =
+    html;
+}
+
+loadAlerts();
+
+setInterval(
+    loadAlerts,
+    5000
+);
+
+</script>
+
+</body>
+
+</html>
