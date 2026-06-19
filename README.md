@@ -4,7 +4,7 @@ This platform is a production-grade, end-to-end fintech solution designed to det
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 The platform follows a modern, decoupled lambda/kappa-style streaming architecture:
 
@@ -55,7 +55,7 @@ The platform follows a modern, decoupled lambda/kappa-style streaming architectu
 
 ---
 
-## 📁 Repository Folder Structure
+## Repository Folder Structure
 
 ```
 .
@@ -87,7 +87,7 @@ The platform follows a modern, decoupled lambda/kappa-style streaming architectu
 
 ---
 
-## 🚀 Step-by-Step Running Instructions
+## Step-by-Step Running Instructions
 
 Follow these steps in order to start and run the entire real-time fraud detection pipeline:
 
@@ -151,7 +151,7 @@ The modern SOC monitoring console will now be live at: [http://localhost:5173](h
 
 ---
 
-## 🧪 Testing the API Prediction Endpoint Manually
+## Testing the API Prediction Endpoint Manually
 
 You can manually trigger a real-time prediction using `curl` against the FastAPI endpoint:
 
@@ -172,7 +172,7 @@ This request queries Redis for User 1's profile, determines if this is a new dev
 
 ---
 
-## 🎯 Applications of this System
+## Applications of this System
 
 * **Fintech & Banking SOCs:** Serves as a real-time monitoring console for credit card fraud operations, highlighting sudden anomalies for card-not-present (CNP) fraud.
 * **Merchant Acquiring Risk Gateways:** Evaluates incoming payment API payloads against cardholder patterns before routing them to card networks.
@@ -180,7 +180,7 @@ This request queries Redis for User 1's profile, determines if this is a new dev
 
 ---
 
-## 🔮 Future Work & Scaling
+## Future Work & Scaling
 
 * **Stream Processing Engines:** Migrate the consumer loop to **Apache Flink** or **Apache Spark Streaming** for sliding window counts and advanced session aggregations.
 * **Model Registry & Auto-retraining:** Integrate **MLflow Model Registry** to automate shadow-model deployments when model drift is detected.
